@@ -8,7 +8,7 @@
       %a.brand{:href => root_path} Demo App
       .nav-collapse.collapse
         - if user_signed_in?
-          %ul.nav
+          %ul.nav.pull-left
             %li.active
               %a{:href => "#"} Home
             %li.dropdown
@@ -24,17 +24,17 @@
                   %a{:href => "#"} Separated link
                 %li
                   %a{:href => "#"} One more separated link
-          %ul.nav.nav-pills.pull-right.user-menu
+          %ul.nav.nav-pills.pull-right
             %li.dropdown
               %a.dropdown-toggle{href: "#", 'data-toggle' => "dropdown"}
                 #{current_user.email}
-              %b.caret
-            %ul.dropdown-menu.user-dropdown
-              %li
-                %a{href: edit_user_registration_path}
-                  %i.icon-cog
-                  account settings
-              %li
-                %a{href: destroy_user_session_path, 'data-method' => 'delete'}
-                  %i.icon-off
-                  logout
+                %b.caret
+              %ul.dropdown-menu
+                %li
+                  %a{href: edit_user_registration_path}
+                    %i.icon-cog
+                    account settings
+                %li
+                  %a{href: destroy_user_session_path, 'data-method' => 'delete'}
+                    %i.icon-off
+                    logout

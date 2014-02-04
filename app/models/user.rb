@@ -1,5 +1,8 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
+
+  ROLES = %w(admin normal)
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
@@ -23,14 +26,27 @@ class User
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
 
-  ## Confirmable
-  # field :confirmation_token,   :type => String
-  # field :confirmed_at,         :type => Time
-  # field :confirmation_sent_at, :type => Time
-  # field :unconfirmed_email,    :type => String # Only if using reconfirmable
+  ##Invitable
+  field :invitation_token, type: String
+  field :invitation_created_at, type: Time
+  field :invitation_sent_at, type: Time
+  field :invitation_accepted_at, type: Time
+  field :invitation_limit, type: Integer
 
-  ## Lockable
-  # field :failed_attempts, :type => Integer, :default => 0 # Only if lock strategy is :failed_attempts
-  # field :unlock_token,    :type => String # Only if unlock strategy is :email or :both
-  # field :locked_at,       :type => Time
+  index( {invitation_token: 1}, {background: true} )
+  index( {invitation_by_id: 1}, {background: true} )
+  
+  field :role, type: String
+  field :name, type: String
+  
+  validates :email, presence: true, uniqueness: true
+  validates :role, inclusion: { in: ROLES }, presence: true
+  
+  def admin?
+    role == 'admin'
+  end
+
+  def normal_user?
+    role == 'normal'
+  end
 end
