@@ -1,0 +1,40 @@
+.navbar.navbar-inverse.navbar-fixed-top
+  .navbar-inner
+    .container
+      %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.brand{:href => root_path} Demo App
+      .nav-collapse.collapse
+        - if user_signed_in?
+          %ul.nav
+            %li.active
+              %a{:href => "#"} Home
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                Dropdown
+                %b.caret
+              %ul.dropdown-menu
+                %li
+                  %a{:href => "#"} Something else here
+                %li.divider
+                %li.nav-header Nav header
+                %li
+                  %a{:href => "#"} Separated link
+                %li
+                  %a{:href => "#"} One more separated link
+          %ul.nav.nav-pills.pull-right.user-menu
+            %li.dropdown
+              %a.dropdown-toggle{href: "#", 'data-toggle' => "dropdown"}
+                #{current_user.email}
+              %b.caret
+            %ul.dropdown-menu.user-dropdown
+              %li
+                %a{href: edit_user_registration_path}
+                  %i.icon-cog
+                  account settings
+              %li
+                %a{href: destroy_user_session_path, 'data-method' => 'delete'}
+                  %i.icon-off
+                  logout
