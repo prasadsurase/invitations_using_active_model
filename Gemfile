@@ -31,6 +31,7 @@ gem 'cancan', '1.6.10'
 gem 'haml-rails', '0.5.3'
 gem 'mongoid', '4.0.0.alpha2'
 gem 'simple_form'
+gem 'bootstrap-sass', '2.3.2.2'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
