@@ -1,16 +1,16 @@
-%h2.pull-left.page-title User Admin
-%h3.pull-right.page-title
-  = link_to '+ Add Multiple Users', batch_invite_path, class: 'btn btn-default'
-  %button.btn.btn-primary{"data-target" => "#add_user_form", "data-toggle" => "modal"}
-    + Add User
-%table.table.table-striped.user-table
-  %thead
-    %th Email
-    %th
-  %tbody
-    - @users.each do |user|
-      %tr
-        %td #{user.email}
+.row
+  %h2.pull-left.page-title User Admin
+  %h3.pull-right.page-title
+    = link_to '+ Add Multiple Users', batch_invite_path, class: 'btn btn-default'
+    %button.btn.btn-primary{"data-target" => "#add_user_form", "data-toggle" => "modal"}
+      + Add User
+  %table.table.table-striped.user-table
+    %thead
+      %th Email
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td #{user.email}
 
 #add_user_form.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
   .modal-dialog
