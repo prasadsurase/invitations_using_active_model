@@ -1,0 +1,4 @@
+%h2.page-title Add Multiple Users
+= simple_form_for(@email, url: batch_confirm_path, html: {method: :post}, role: 'form' ) do |f|
+    = f.input :emails, label: 'Enter email addresses, seperated by commas.', required: true, as: :text, input_html: {rows: '10', class: 'input-xxlarge'},  placeholder: 'joe@acme.com, jane@acme.com'
+    = f.button :submit, 'Next', class: 'btn btn-large btn-primary'

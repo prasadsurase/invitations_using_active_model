@@ -1,0 +1,7 @@
+- user ||= @user
+
+= simple_form_for(resource, as: resource_name, url: invitation_path(resource_name), html: {class: 'form-horizontal', method: :post}, role: 'form' ) do |f|
+  = f.input :first_name, autofocus: true
+  = f.input :last_name
+  = f.input :email, label: 'Email', required: true 
+  = f.button :submit, t("devise.invitations.new.submit_button"), class: 'btn btn-primary'

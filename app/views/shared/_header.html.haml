@@ -8,22 +8,21 @@
       %a.brand{:href => root_path} Demo App
       .nav-collapse.collapse
         - if user_signed_in?
-          %ul.nav.pull-left
-            %li.active
-              %a{:href => "#"} Home
-            %li.dropdown
-              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-                Dropdown
-                %b.caret
-              %ul.dropdown-menu
-                %li
-                  %a{:href => "#"} Something else here
-                %li.divider
-                %li.nav-header Nav header
-                %li
-                  %a{:href => "#"} Separated link
-                %li
-                  %a{:href => "#"} One more separated link
+          /
+            %ul.nav.pull-left
+              %li.dropdown
+                %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                  Dropdown
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "#"} Something else here
+                  %li.divider
+                  %li.nav-header Nav header
+                  %li
+                    %a{:href => "#"} Separated link
+                  %li
+                    %a{:href => "#"} One more separated link
           %ul.nav.nav-pills.pull-right
             %li.dropdown
               %a.dropdown-toggle{href: "#", 'data-toggle' => "dropdown"}

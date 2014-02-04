@@ -1,0 +1,6 @@
+:plain
+- unless @valid
+  $('#new_invitation_form').replaceWith("#{escape_javascript(render partial: 'users/new_user_form', locals: {user: @user})}");
+- if @valid
+  $('#add_user_form').modal('hide');
+  window.location.href="#{users_path}";

@@ -1,0 +1,28 @@
+%h2.page-title Add Multiple Users
+- errors = @issues.collect{|i| i[1].nil?}.uniq.include? false
+%h4.page-title
+  - if errors
+    There were errors (see below).
+  - unless errors
+    The following users will be added.
+
+%table.table.table-striped
+  %thead
+    %th Email
+    - if errors
+      %th Error
+  %tbody
+    - @issues.each do |issue|
+      %tr{class: issue[1].nil? ? "text-success" : "text-error"}
+        %td
+          = issue[0]
+        - if errors
+          %td
+            = issue[1].join(', ') if issue[1]
+
+- if errors
+  %h4 Press the back button on your browser to correct the errors.
+- unless errors
+  = simple_form_for(@email, url: batch_create_path, method: :post) do |f|
+    = f.input :emails, as: :hidden
+    = f.button :submit, 'Add Users', class: 'btn btn-large btn-warning'
