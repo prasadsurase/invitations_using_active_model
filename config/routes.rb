@@ -5,7 +5,7 @@ InvitationsUsingActiveModel::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  devise_for :users, controllers: {invitations: 'invitations'}
+  devise_for :users, controllers: {invitations: 'invitations', registrations: 'registrations'}
   devise_scope :user do
     get '/batch_invite', to: 'invitations#batch_invite'
     post '/batch_confirm', to: 'invitations#batch_confirm'

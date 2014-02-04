@@ -4,7 +4,7 @@
   - if errors
     There were errors (see below).
   - unless errors
-    The following users will be added.
+    The below users will be invited.
 
 %table.table.table-striped
   %thead
@@ -20,8 +20,6 @@
           %td
             = issue[1].join(', ') if issue[1]
 
-- if errors
-  %h4 Press the back button on your browser to correct the errors.
 - unless errors
   = simple_form_for(@email, url: batch_create_path, method: :post) do |f|
     = f.input :emails, as: :hidden

@@ -9,8 +9,7 @@ class InvitationsController < Devise::InvitationsController
     @user = Services::InviteUser.new(user_params)
     @valid = @user.valid?
     if @valid
-      user = current_user.company.users.new(user_params)
-      user.role, user.company = User::USER_ROLES[2], current_user.company
+      user = User.new(user_params)
       user.invite!
       flash[:notice] = "User #{user.name} invited successfully"
     end
@@ -32,7 +31,7 @@ class InvitationsController < Devise::InvitationsController
   def batch_create
     Services::InviteUsers.invite(current_user, users_params[:emails])
     flash[:success] = "Invitations sent to #{users_params[:emails].split(',').count} users."
-    redirect_to users_path 
+    redirect_to root_path 
   end
 
   private
@@ -42,7 +41,7 @@ class InvitationsController < Devise::InvitationsController
   end
   
   def user_params #related to single user invitation
-    params.require(:services_invite_user).permit(:first_name, :last_name, :email)
+    params.require(:services_invite_user).permit(:name, :email)
   end
   
   def company_admin?

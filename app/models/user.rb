@@ -36,7 +36,7 @@ class User
   index( {invitation_token: 1}, {background: true} )
   index( {invitation_by_id: 1}, {background: true} )
   
-  field :role, type: String
+  field :role, type: String, default: ROLES[1]
   field :name, type: String
   
   validates :email, presence: true, uniqueness: true
