@@ -18,6 +18,7 @@ InvitationsUsingActiveModel::Application.configure do
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
+  config.action_mailer.default_url_options = { :host => 'localhost:3009'}
 
 
   # Debug mode disables concatenation and preprocessing of assets.
